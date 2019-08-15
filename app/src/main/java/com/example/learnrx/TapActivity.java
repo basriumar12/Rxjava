@@ -33,8 +33,21 @@ public class TapActivity extends AppCompatActivity {
         textCount = (TextView) findViewById(R.id.text_count);
         textTotal = (TextView) findViewById(R.id.text_total);
 
+        //inisialisasi tap stream dengan button yang akan di tap
         Observable<Void> tapStream = RxView.clicks(btnTap).share();
 
+        /*
+        Operator map berfungsi untuk melakukan perubahan/pengolahan nilai yang terhadap setiap
+        item yang di-emit oleh Observer. Contohnya, kita mau mengubah nilai awal yang diberikan adalah
+        array integer yang di-emit kemudian, dengan operator map maka akan dilakukan
+        pengolahan untuk menampilkan apakah bilangan integer tersebut bilangan genap atau ganjil.
+
+         filter = melakukan operasi yang ada dalam map, contoh dibawah yaitu integer yang lebih dari 2
+        */
+
+
+
+        //buat objek untuk menentukan jumlah tap pada button
         Observable<Integer> multipleTapCountStream = tapStream.buffer(tapStream
                 .debounce(1, TimeUnit.SECONDS))
                 .map(new Func1<List<Void>, Integer>() {
@@ -52,6 +65,9 @@ public class TapActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+        //data di konsumsi oleh observer
         Observer<Integer> multipleTapObserver = new Observer<Integer>() {
             @Override
             public void onCompleted() {
@@ -68,6 +84,7 @@ public class TapActivity extends AppCompatActivity {
                 showTapCount(integer);
             }
         };
+
 
         multipleTapCountStream.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(multipleTapObserver);

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnValidasiPsw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TapActivity.class));
+                startActivity(new Intent(MainActivity.this, ValidasiActivity.class));
 
             }
         });
