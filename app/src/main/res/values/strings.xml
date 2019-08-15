@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Learn RX</string>
+    <string name="tap_me">Tap Me</string>
+    <string name="double_tap_total">Tap Total</string>
+</resources>
