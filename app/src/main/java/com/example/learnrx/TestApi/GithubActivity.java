@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,21 +24,19 @@ import com.example.learnrx.TestApi.model.ResponseRepos;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+
+
 public class GithubActivity extends AppCompatActivity {
 
-    @BindView(R.id.pbLoading)
     ProgressBar pbLoading;
-    @BindView(R.id.rvRepos)
     RecyclerView rvRepos;
-    @BindView(R.id.etUsername)
     EditText etUsername;
+    Button btnSearch;
 
     BaseApiService mApiService;
     ReposAdapter mRepoAdapter;
@@ -48,8 +47,9 @@ public class GithubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_github);
-
-        ButterKnife.bind(this);
+        pbLoading = (ProgressBar)findViewById(R.id.pbLoading);
+        etUsername = (EditText) findViewById(R.id.etUsername) ;
+        rvRepos = (RecyclerView) findViewById(R.id.rvRepos);
 
         mApiService = UtilsApi.getAPIService();
 
@@ -74,6 +74,8 @@ public class GithubActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 
     private void requestRepos(String username) {

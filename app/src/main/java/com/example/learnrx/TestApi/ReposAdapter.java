@@ -13,8 +13,8 @@ import com.example.learnrx.TestApi.model.Repo;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
+
 
 public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
 
@@ -62,14 +62,13 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tvName)
         TextView tvName;
-        @BindView(R.id.tvDesc)
         TextView tvDesc;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvDesc =itemView.findViewById(R.id.tvDesc);
         }
     }
 

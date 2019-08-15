@@ -14,6 +14,7 @@
         android:focusableInTouchMode="true"
         tools:context=".MainActivity">
 
+
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -45,8 +46,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRepos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
