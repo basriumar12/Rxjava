@@ -15,14 +15,6 @@
         tools:context=".MainActivity">
 
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ic_launcher_background"
-            android:layout_gravity="center"
-            tools:ignore="ContentDescription,VectorDrawableCompat" />
-
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
@@ -34,6 +26,16 @@
             android:inputType="text"
             android:imeOptions="actionSearch"
             android:hint="UserName github"/>
+
+
+        <Button
+            android:text="Search"
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription,VectorDrawableCompat" />
 
         <ProgressBar
             android:id="@+id/pbLoading"

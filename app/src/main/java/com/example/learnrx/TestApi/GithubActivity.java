@@ -1,13 +1,10 @@
 package com.example.learnrx.TestApi;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +47,7 @@ public class GithubActivity extends AppCompatActivity {
         pbLoading = (ProgressBar)findViewById(R.id.pbLoading);
         etUsername = (EditText) findViewById(R.id.etUsername) ;
         rvRepos = (RecyclerView) findViewById(R.id.rvRepos);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
 
         mApiService = UtilsApi.getAPIService();
 
@@ -59,22 +57,17 @@ public class GithubActivity extends AppCompatActivity {
         rvRepos.setHasFixedSize(true);
         rvRepos.setAdapter(mRepoAdapter);
 
-        etUsername.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                /*
-                EditorInfo.IME_ACTION_SEARCH ini berfungsi untuk men-set keyboard kamu
-                agar enter di keyboard menjadi search.
-                 */
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            public void onClick(View view) {
+
+                if (!etUsername.getText().toString().isEmpty()) {
                     String username = etUsername.getText().toString();
                     requestRepos(username);
-                    return true;
                 }
-                return false;
             }
         });
-
 
     }
 
